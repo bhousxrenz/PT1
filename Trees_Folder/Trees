@@ -1,0 +1,104 @@
+#include <iostream>
+#include <queue>  // For level order traversal
+
+using namespace std;
+
+// Structure for a binary tree node
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) : data(val), left(nullptr), right(nullptr) {}
+};
+
+// Function to perform inorder traversal (Left, Root, Right)
+void inorder(Node* root) {
+    if (root == nullptr) {
+        return;
+    }
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+
+// Function to perform preorder traversal (Root, Left, Right)
+void preorder(Node* root) {
+    if (root == nullptr) {
+        return;
+    }
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+// Function to perform postorder traversal (Left, Right, Root)
+void postorder(Node* root) {
+    if (root == nullptr) {
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";
+}
+
+// Function for level order traversal (breadth-first)
+void levelOrder(Node* root) {
+    if (root == nullptr) {
+        return;
+    }
+    queue<Node*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        Node* current = q.front();
+        cout << current->data << " ";
+        q.pop();
+
+        if (current->left != nullptr) {
+            q.push(current->left);
+        }
+        if (current->right != nullptr) {
+            q.push(current->right);
+        }
+    }
+}
+
+// Function to calculate the height of the tree
+int height(Node* root) {
+    if (root == nullptr) {
+        return 0;
+    }
+    return 1 + max(height(root->left), height(root->right));
+}
+
+int main() {
+    // Constructing a sample binary tree
+    Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
+
+    cout << "Inorder traversal: ";
+    inorder(root);
+    cout << endl; // Output: 4 2 5 1 6 3 7
+
+    cout << "Preorder traversal: ";
+    preorder(root);
+    cout << endl; // Output: 1 2 4 5 3 6 7
+
+    cout << "Postorder traversal: ";
+    postorder(root);
+    cout << endl; // Output: 4 5 2 6 7 3 1
+
+    cout << "Level order traversal: ";
+    levelOrder(root);
+    cout << endl; // Output: 1 2 3 4 5 6 7
+
+    cout << "Height of the tree: " << height(root) << endl; // Output: 3
+
+    return 0;
+}
