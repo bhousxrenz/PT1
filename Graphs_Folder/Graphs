@@ -1,0 +1,79 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits> // For INT_MAX
+
+using namespace std;
+
+// Structure to represent an edge in the graph
+struct Edge {
+    int to;
+    int weight;
+};
+
+// Function to add an edge to the graph (undirected)
+void addEdge(vector<vector<Edge>>& adj, int u, int v, int w) {
+    adj[u].push_back({v, w});
+    adj[v].push_back({u, w}); // For undirected graph
+}
+
+// Dijkstra's Algorithm for Shortest Path (Single Source)
+vector<int> dijkstra(const vector<vector<Edge>>& adj, int start) {
+    int n = adj.size();
+    vector<int> dist(n, INT_MAX); // Initialize distances to infinity
+    dist[start] = 0;
+
+    // Priority queue to store vertices and their distances (min heap)
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    pq.push({0, start}); // {distance, vertex}
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        int d = pq.top().first;
+        pq.pop();
+
+        if (d > dist[u]) continue; // Optimization: Skip if we have a better path already
+
+        for (const Edge& edge : adj[u]) {
+            int v = edge.to;
+            int weight = edge.weight;
+
+            if (dist[u] + weight < dist[v]) {
+                dist[v] = dist[u] + weight;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+    return dist;
+}
+
+int main() {
+    int numVertices = 6;
+    vector<vector<Edge>> adj(numVertices);
+
+    // Build the graph (example)
+    addEdge(adj, 0, 1, 4);
+    addEdge(adj, 0, 2, 2);
+    addEdge(adj, 1, 2, 1);
+    addEdge(adj, 1, 3, 5);
+    addEdge(adj, 2, 3, 8);
+    addEdge(adj, 2, 4, 10);
+    addEdge(adj, 3, 4, 6);
+    addEdge(adj, 3, 5, 5);
+    addEdge(adj, 4, 5, 4);
+
+    int startVertex = 0;
+    vector<int> shortestPaths = dijkstra(adj, startVertex);
+
+    cout << "Shortest paths from vertex " << startVertex << ":" << endl;
+    for (int i = 0; i < numVertices; ++i) {
+        cout << "To vertex " << i << ": ";
+        if (shortestPaths[i] == INT_MAX) {
+            cout << "Infinity" << endl;
+        } else {
+            cout << shortestPaths[i] << endl;
+        }
+    }
+
+    return 0;
+}
