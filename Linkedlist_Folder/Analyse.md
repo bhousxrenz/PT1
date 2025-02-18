@@ -1,108 +1,42 @@
-## Analysis of the C++ Linked List Code
+Let's break down this C++ code, which demonstrates singly linked lists, doubly linked lists, and circular linked lists.
 
-This code implements a singly linked list in C++ with several common operations: insertion at the beginning, insertion at the end, deletion of a node, reversal of the list, and display of the list. Let's break down the code section by section:
+**Explanation of Linked Lists:**
 
-**1. Node Structure:**
+A linked list is a dynamic data structure where elements (nodes) are connected through pointers. Unlike arrays, linked lists don't store elements in contiguous memory locations.  This makes them flexible for insertions and deletions, but accessing elements can be slower.
 
-```cpp
-struct Node {
-    int data;
-    Node* next;
-};
-```
+*   **Singly Linked List:** Each node has data and a pointer (`next`) to the next node.  Traversal is unidirectional.
 
-This defines the structure of a node in the linked list. Each node contains an integer `data` and a pointer `next` to the next node in the list.
+*   **Doubly Linked List:** Each node has data, a pointer to the next node (`next`), and a pointer to the previous node (`prev`). This allows bidirectional traversal.
 
-**2. Insertion at the Beginning:**
+*   **Circular Linked List:** The last node's `next` pointer points back to the head, creating a cycle.
 
-```cpp
-void insertAtBeginning(Node*& head, int data) {
-    Node* newNode = new Node{data, head};
-    head = newNode;
-}
-```
+**Code Breakdown:**
 
-This function inserts a new node with the given `data` at the beginning of the list. It creates a new node, sets its `next` pointer to the current head, and then updates the head to point to the new node.
+1.  **Node Structures:**
+    *   `SinglyNode`: Represents a node in a singly linked list.
+    *   `DoublyNode`: Represents a node in a doubly linked list.
 
-**3. Insertion at the End:**
+2.  **Singly Linked List Functions:**
+    *   `insertSingly(SinglyNode*& head, int data)`: Inserts a new node containing `data` at the *end* of the list.
+    *   `displaySingly(SinglyNode* head)`: Prints the data of each node, followed by "-> ", and then "NULL" at the end.
 
-```cpp
-void insertAtEnd(Node*& head, int data) {
-    Node* newNode = new Node{data, nullptr};
-    if (!head) {
-        head = newNode;
-        return;
-    }
-    Node* temp = head;
-    while (temp->next) temp = temp->next;
-    temp->next = newNode;
-}
-```
+3.  **Doubly Linked List Functions:**
+    *   `insertDoubly(DoublyNode*& head, int data)`: Inserts a new node at the *end* of the list.  Crucially, it also sets the `prev` pointer of the new node and the `next` pointer of the previous node.
+    *   `displayDoubly(DoublyNode* head)`: Prints the data of each node, followed by " <-> ", and then "NULL".
 
-This function inserts a new node at the end of the list. It first checks if the list is empty. If it is, the new node becomes the head. Otherwise, it traverses the list to the end and then appends the new node.
+4.  **Circular Linked List Functions:**
+    *   `insertCircular(SinglyNode*& head, int data)`: Inserts a new node at the *end* of the list. The `next` pointer of the last node is made to point back to the head, creating the circular link.
+    *   `displayCircular(SinglyNode* head)`: Prints the data of each node. Because it's circular, the loop continues until the head is encountered again. It prints " (Back to Head)" to signify the completion of the circle.
 
-**4. Deletion of a Node:**
+5.  **`main()` Function:**
+    *   Creates empty linked lists of each type.
+    *   Inserts data into each list.
+    *   Calls the respective display functions to print the contents of each list.
 
-```cpp
-void deleteNode(Node*& head, int key) {
-    if (!head) return;
-    if (head->data == key) {
-        Node* temp = head;
-        head = head->next;
-        delete temp;
-        return;
-    }
-    Node* temp = head;
-    while (temp->next && temp->next->data != key) temp = temp->next;
-    if (temp->next) {
-        Node* toDelete = temp->next;
-        temp->next = temp->next->next;
-        delete toDelete;
-    }
-}
-```
-
-This function deletes the node with the given `key` from the list. It handles the case where the node to be deleted is the head. Otherwise, it traverses the list to find the node before the node to be deleted and then updates the `next` pointer to bypass the node to be deleted.
-
-**5. Reversal of the List:**
-
-```cpp
-void reverseList(Node*& head) {
-    Node* prev = nullptr, *curr = head, *next = nullptr;
-    while (curr) {
-        next = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = next;
-    }
-    head = prev;
-}
-```
-
-This function reverses the linked list iteratively. It uses three pointers: `prev`, `curr`, and `next` to reverse the links between the nodes.
-
-**6. Display of the List:**
-
-```cpp
-void display(Node* head) {
-    while (head) {
-        cout << head->data << " -> ";
-        head = head->next;
-    }
-    cout << "NULL\n";
-}
-```
-
-This function traverses the list and prints the data of each node.
-
-**7. Main Function:**
-
-The `main` function demonstrates the usage of the linked list operations. It creates a linked list, inserts elements, deletes an element, reverses the list, and displays the list at various stages.
-
-## Predicted Output:
+**Predicted Output:**
 
 ```
-Linked List: 1 -> 5 -> 10 -> 20 -> 30 -> NULL
-After deleting 20: 1 -> 5 -> 10 -> 30 -> NULL
-Reversed List: 30 -> 10 -> 5 -> 1 -> NULL
+Singly Linked List: 10 -> 20 -> 30 -> NULL
+Doubly Linked List: 100 <-> 200 <-> 300 <-> NULL
+Circular Linked List: 1 -> 2 -> 3 ->  (Back to Head)
 ```
