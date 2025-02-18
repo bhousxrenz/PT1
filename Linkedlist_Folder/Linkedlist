@@ -1,88 +1,119 @@
 #include <iostream>
+
 using namespace std;
 
-// Node structure for a singly linked list
-struct Node {
+// Singly Linked List Node
+struct SinglyNode {
     int data;
-    Node* next;
+    SinglyNode* next;
 };
 
-// Insert at the beginning
-void insertAtBeginning(Node*& head, int data) {
-    Node* newNode = new Node{data, head};
-    head = newNode;
-}
+// Doubly Linked List Node
+struct DoublyNode {
+    int data;
+    DoublyNode* next;
+    DoublyNode* prev;
+};
 
-// Insert at the end
-void insertAtEnd(Node*& head, int data) {
-    Node* newNode = new Node{data, nullptr};
+// Circular Linked List Node (using the SinglyNode structure)
+
+// --- Singly Linked List Functions ---
+void insertSingly(SinglyNode*& head, int data) {
+    SinglyNode* newNode = new SinglyNode{data, nullptr};
     if (!head) {
         head = newNode;
-        return;
-    }
-    Node* temp = head;
-    while (temp->next) temp = temp->next;
-    temp->next = newNode;
-}
-
-// Delete a node
-void deleteNode(Node*& head, int key) {
-    if (!head) return;
-    if (head->data == key) {
-        Node* temp = head;
-        head = head->next;
-        delete temp;
-        return;
-    }
-    Node* temp = head;
-    while (temp->next && temp->next->data != key) temp = temp->next;
-    if (temp->next) {
-        Node* toDelete = temp->next;
-        temp->next = temp->next->next;
-        delete toDelete;
+    } else {
+        SinglyNode* temp = head;
+        while (temp->next) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
     }
 }
 
-// Reverse a linked list
-void reverseList(Node*& head) {
-    Node* prev = nullptr, *curr = head, *next = nullptr;
-    while (curr) {
-        next = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = next;
-    }
-    head = prev;
-}
-
-// Display list
-void display(Node* head) {
+void displaySingly(SinglyNode* head) {
     while (head) {
         cout << head->data << " -> ";
         head = head->next;
     }
-    cout << "NULL\n";
+    cout << "NULL" << endl;
 }
 
+// --- Doubly Linked List Functions ---
+void insertDoubly(DoublyNode*& head, int data) {
+    DoublyNode* newNode = new DoublyNode{data, nullptr, nullptr};
+    if (!head) {
+        head = newNode;
+    } else {
+        DoublyNode* temp = head;
+        while (temp->next) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+        newNode->prev = temp;
+    }
+}
+
+void displayDoubly(DoublyNode* head) {
+    while (head) {
+        cout << head->data << " <-> ";
+        head = head->next;
+    }
+    cout << "NULL" << endl;
+}
+
+// --- Circular Linked List Functions ---
+void insertCircular(SinglyNode*& head, int data) {  // Using SinglyNode for circular list
+    SinglyNode* newNode = new SinglyNode{data, nullptr};
+    if (!head) {
+        head = newNode;
+        newNode->next = head; // Point to itself for circularity
+    } else {
+        SinglyNode* temp = head;
+        while (temp->next != head) { // Traverse until you reach the head again
+            temp = temp->next;
+        }
+        temp->next = newNode;
+        newNode->next = head; // Make the last node point to the head
+    }
+}
+
+void displayCircular(SinglyNode* head) {
+    if (!head) return;
+
+    SinglyNode* temp = head;
+    do {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    } while (temp != head); // Stop when you reach the head again
+    cout << " (Back to Head)" << endl;
+}
+
+
 int main() {
-    Node* head = nullptr;
+    // Singly Linked List
+    SinglyNode* singlyHead = nullptr;
+    insertSingly(singlyHead, 10);
+    insertSingly(singlyHead, 20);
+    insertSingly(singlyHead, 30);
+    cout << "Singly Linked List: ";
+    displaySingly(singlyHead);
 
-    insertAtEnd(head, 10);
-    insertAtEnd(head, 20);
-    insertAtEnd(head, 30);
-    insertAtBeginning(head, 5);
-    insertAtBeginning(head, 1);
+    // Doubly Linked List
+    DoublyNode* doublyHead = nullptr;
+    insertDoubly(doublyHead, 100);
+    insertDoubly(doublyHead, 200);
+    insertDoubly(doublyHead, 300);
+    cout << "Doubly Linked List: ";
+    displayDoubly(doublyHead);
 
-    cout << "Linked List: ";
-    display(head);
-
-    deleteNode(head, 20);
-    cout << "After deleting 20: ";
-    display(head);
-
-    reverseList(head);
-    cout << "Reversed List: ";
-    display(head);
+    // Circular Linked List
+    SinglyNode* circularHead = nullptr;
+    insertCircular(circularHead, 1);
+    insertCircular(circularHead, 2);
+    insertCircular(circularHead, 3);
+    cout << "Circular Linked List: ";
+    displayCircular(circularHead);
 
     return 0;
 }
