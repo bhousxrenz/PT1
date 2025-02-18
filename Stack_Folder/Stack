@@ -1,0 +1,87 @@
+#include <iostream>
+#include <stack>
+#include <vector>
+#include <string>
+#include <algorithm> // Make sure to include this for std::reverse
+
+using namespace std;
+
+// Function to reverse a string using a stack
+string reverseString(string str) {
+    stack<char> s;
+    for (char c : str) {
+        s.push(c);
+    }
+    string reversedStr = "";
+    while (!s.empty()) {
+        reversedStr += s.top();
+        s.pop();
+    }
+    return reversedStr;
+}
+
+// Function to check for balanced parentheses using a stack
+bool isBalanced(string str) {
+    stack<char> s;
+    for (char c : str) {
+        if (c == '(' || c == '{' || c == '[') {
+            s.push(c);
+        } else if (c == ')' || c == '}' || c == ']') {
+            if (s.empty()) {
+                return false; // Unmatched closing parenthesis
+            }
+            char top = s.top();
+            s.pop();
+            if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {
+                return false; // Mismatched parentheses
+            }
+        }
+    }
+    return s.empty(); // All parentheses should be matched
+}
+
+
+int main() {
+    // 1. String Reversal
+    string str = "Hello, Stack!";
+    string reversed = reverseString(str);
+    cout << "Reversed string: " << reversed << endl;
+
+    // 2. Balanced Parentheses Check
+    string balancedStr = "{[()]}";
+    string unbalancedStr = "{[(])}";
+    cout << "Balanced string check: " << isBalanced(balancedStr) << endl;   // Output: 1 (true)
+    cout << "Unbalanced string check: " << isBalanced(unbalancedStr) << endl; // Output: 0 (false)
+
+
+    // 3. Stack Operations (Demonstration)
+    stack<int> myStack;
+    myStack.push(10);
+    myStack.push(20);
+    myStack.push(30);
+
+    cout << "\nStack operations:" << endl;
+    cout << "Top element: " << myStack.top() << endl; // Output: 30
+    cout << "Stack size: " << myStack.size() << endl;   // Output: 3
+    myStack.pop();
+    cout << "Top element after pop: " << myStack.top() << endl; // Output: 20
+    cout << "Is stack empty? " << myStack.empty() << endl; // Output: 0 (false)
+
+    // 4.  Converting Decimal to Binary using Stack:
+    int decimalNum = 25;
+    stack<int> binaryStack;
+
+    while (decimalNum > 0) {
+        binaryStack.push(decimalNum % 2);
+        decimalNum /= 2;
+    }
+
+    cout << "\nBinary representation of 25: ";
+    while (!binaryStack.empty()) {
+        cout << binaryStack.top();
+        binaryStack.pop();
+    }
+    cout << endl; // Output: 11001
+
+    return 0;
+}
