@@ -1,4 +1,4 @@
-LINKEDLIST
+**LINKEDLIST**
 is a linear collection of data elements, called nodes, where each node points to the next node in the sequence.  Unlike arrays, linked lists don't store elements in contiguous memory locations, allowing for dynamic resizing and efficient insertions/deletions.  Each node in a linked list typically contains data and a pointer (or link) to the next node.This C++ code defines and demonstrates the use of three fundamental data structures: singly linked lists, doubly linked lists, and circular linked lists. Let's break down the code section by section:
 
 **1. Node Structures:**
