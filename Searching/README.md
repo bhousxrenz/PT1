@@ -1,6 +1,7 @@
-**SEARCHING&SORTING** are fundamental operations in computer science used to organize and retrieve data efficiently.  Searching algorithms locate specific elements within a dataset, while sorting algorithms arrange elements in a particular order (e.g., ascending or descending).  These processes are essential for tasks like database management, information retrieval, and optimizing data for further processing. This C++ code demonstrates several useful algorithms from the `<algorithm>` and `<numeric>` headers, focusing on sorting, searching, and other common operations on vectors. 
+# **SEARCHING&SORTING** 
+are fundamental operations in computer science used to organize and retrieve data efficiently.  Searching algorithms locate specific elements within a dataset, while sorting algorithms arrange elements in a particular order (e.g., ascending or descending).  These processes are essential for tasks like database management, information retrieval, and optimizing data for further processing. This C++ code demonstrates several useful algorithms from the `<algorithm>` and `<numeric>` headers, focusing on sorting, searching, and other common operations on vectors. 
 
-**1. Includes and Namespace:**
+## Includes and Namespace:
 
 ```c++
 #include <iostream>
@@ -17,7 +18,7 @@ using namespace std;
 *   `#include <numeric>`: For `std::iota`, used to generate a sequence of numbers.
 *   `using namespace std;`: To avoid writing `std::` before standard library elements.
 
-**2. `printVector()` Function:**
+## `printVector()` Function:
 
 ```c++
 void printVector(const vector<int>& vec) {
@@ -30,7 +31,7 @@ void printVector(const vector<int>& vec) {
 
 *   A helper function to print the elements of a vector to the console.
 
-**3. `main()` Function:**
+## `main()` Function:
 
 ```c++
 int main() {
@@ -48,12 +49,12 @@ int main() {
 }
 ```
 
-*   **Example Data:**
+## *   Example Data:
     *   `vector<int> data(20);`: Creates a vector named `data` with 20 elements.
     *   `iota(data.begin(), data.end(), 0);`: Fills the vector with the sequence 0, 1, 2, ..., 19.
     *   `random_shuffle(data.begin(), data.end());`: Randomly shuffles the elements of the vector. The output here will be a different random sequence each time you run the code.  Let's assume for this example the shuffle resulted in: `17 5 12 1 19 9 14 3 11 7 15 0 18 10 4 13 8 16 2`
 
-**4. Sorting Algorithms:**
+## Sorting Algorithms:
 
 ```c++
     // a. std::sort (IntroSort)
@@ -72,7 +73,7 @@ int main() {
 *   `std::sort`: Sorts the elements in ascending order using IntroSort (a hybrid algorithm).
 *   `std::stable_sort`: Sorts the elements while preserving the relative order of equal elements.  In this example, since all elements are unique, the output of `stable_sort` is the same as `sort`.
 
-**5. Searching Algorithms:**
+## Searching Algorithms:
 
 ```c++
     // a. std::binary_search (requires sorted data)
@@ -104,7 +105,7 @@ int main() {
 *   `std::upper_bound`: Finds the last position where an element could be inserted in a *sorted* range without violating the order.
 *   `std::find`: Searches for the first occurrence of an element in an *unsorted* range.
 
-**6. Other Useful Algorithms:**
+## Other Useful Algorithms:
 
 ```c++
     // a. std::min_element, std::max_element
@@ -123,7 +124,7 @@ int main() {
 *   `std::max_element`: Finds the iterator pointing to the largest element in a range.
 *   `std::reverse`: Reverses the order of elements in a range.
 
-**Output (will vary due to `random_shuffle`):**
+## (will vary due to `random_shuffle`):
 
 ```
 Unsorted data: 17 5 12 1 19 9 14 3 11 7 15 0 18 10 4 13 8 16 2 
