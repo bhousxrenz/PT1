@@ -1,6 +1,7 @@
-**QUEUES** a linear data structure that follows the First-In, First-Out (FIFO) principle, meaning the first element added is the first one removed.  Think of it like a line of people waiting – the person at the front is the first one served.  Queues are used in various applications, such as managing print jobs, handling requests in a web server, and implementing breadth-first search algorithms.
+# **QUEUES** 
+a linear data structure that follows the First-In, First-Out (FIFO) principle, meaning the first element added is the first one removed.  Think of it like a line of people waiting – the person at the front is the first one served.  Queues are used in various applications, such as managing print jobs, handling requests in a web server, and implementing breadth-first search algorithms.
 
-**1. Header and Namespace:**
+## Header and Namespace:
 
 ```cpp
 #include <iostream>
@@ -10,7 +11,7 @@ using namespace std;
 *   `#include <iostream>`: Includes the iostream library for input/output operations (like `cout`).
 *   `using namespace std;`: Uses the standard namespace to avoid writing `std::` before standard elements like `cout`.
 
-**2. Macro Definition:**
+## Macro Definition:
 
 ```cpp
 #define SIZE 5
@@ -18,7 +19,7 @@ using namespace std;
 
 *   `#define SIZE 5`: Defines a constant `SIZE` with a value of 5. This determines the maximum number of elements the circular queue can hold.  Using a macro is a common way to define constants in C++.
 
-**3. CircularQueue Class:**
+## CircularQueue Class:
 
 ```cpp
 class CircularQueue {
@@ -36,7 +37,7 @@ public:
     *   `int rear`: An integer to keep track of the index of the rear element in the queue.
 *   `public:`: The members declared after this are accessible from outside the class.
 
-**4. Constructor:**
+## Constructor:
 
 ```cpp
 CircularQueue() {
@@ -47,7 +48,7 @@ CircularQueue() {
 
 *   `CircularQueue()`: The constructor of the class. It initializes `front` and `rear` to -1, indicating that the queue is initially empty.
 
-**5. `isFull()` Method:**
+## `isFull()` Method:
 
 ```cpp
 bool isFull() {
@@ -57,7 +58,7 @@ bool isFull() {
 
 *   `bool isFull()`: Returns `true` if the queue is full, `false` otherwise. The modulo operator (`%`) is crucial for implementing the circular behavior. The condition `(rear + 1) % SIZE == front` checks if the next position after `rear` (wrapping around the array if necessary) is equal to `front`.  If it is, the queue is full.
 
-**6. `isEmpty()` Method:**
+## `isEmpty()` Method:
 
 ```cpp
 bool isEmpty() {
@@ -67,7 +68,7 @@ bool isEmpty() {
 
 *   `bool isEmpty()`: Returns `true` if the queue is empty, `false` otherwise.  A queue is empty if `front` is -1.
 
-**7. `enqueue()` Method:**
+## `enqueue()` Method:
 
 ```cpp
 void enqueue(int value) {
@@ -87,7 +88,7 @@ void enqueue(int value) {
     3.  Updates `rear` using the modulo operator to wrap around the array.
     4.  Inserts the `value` at the `rear` index in the `items` array.
 
-**8. `dequeue()` Method:**
+## `dequeue()` Method:
 
 ```cpp
 void dequeue() {
@@ -107,7 +108,7 @@ void dequeue() {
     3.  If the queue had only one element (`front == rear`), resets both `front` and `rear` to -1.
     4.  Otherwise, increments `front` using the modulo operator.
 
-**9. `display()` Method:**
+## `display()` Method:
 
 ```cpp
 void display() {
@@ -130,7 +131,7 @@ void display() {
     1.  Checks if the queue is empty. If it is, prints a message and returns.
     2.  Iterates through the queue elements starting from `front` until `rear` is reached, using the modulo operator to handle the circular wrapping.
 
-**10. `main()` Function:**
+## `main()` Function:
 
 ```cpp
 int main() {
@@ -156,7 +157,7 @@ int main() {
     5.  Enqueues 60. Because of the circular nature, 60 will be inserted at the position previously occupied by 10.
     6.  Calls `display()` again to show the updated queue.
 
-**Output:**
+## Output:
 
 ```
 Queue elements: 10 20 30 40 50 
