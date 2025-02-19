@@ -1,4 +1,5 @@
-**GRAPHS** is a data structure consisting of a set of vertices (or nodes) and a set of edges that connect these vertices.  Edges may be directed (representing a one-way relationship) or undirected (representing a two-way relationship), and they can have weights assigned to them to represent costs or distances.  Graphs are used to model various real-world scenarios, such as social networks, road maps, and dependencies between tasks, enabling the analysis of connections and relationships. This C++ code implements Dijkstra's algorithm to find the shortest paths from a single source vertex to all other vertices in an undirected graph.
+# **GRAPHS** 
+is a data structure consisting of a set of vertices (or nodes) and a set of edges that connect these vertices.  Edges may be directed (representing a one-way relationship) or undirected (representing a two-way relationship), and they can have weights assigned to them to represent costs or distances.  Graphs are used to model various real-world scenarios, such as social networks, road maps, and dependencies between tasks, enabling the analysis of connections and relationships. This C++ code implements Dijkstra's algorithm to find the shortest paths from a single source vertex to all other vertices in an undirected graph.
 
 **1. Includes and Namespace:**
 
