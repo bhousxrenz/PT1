@@ -160,11 +160,5 @@ Doubly Linked List: 100 <-> 200 <-> 300 <-> NULL
 Circular Linked List: 1 -> 2 -> 3 ->  (Back to Head)
 ```
 
-**Explanation of the Output:**
-
-*   The output shows the contents of each linked list after the insertions.
-*   The singly linked list contains 10, 20, and 30.
-*   The doubly linked list contains 100, 200, and 300.
-*   The circular linked list contains 1, 2, and 3, and the "(Back to Head)" indicates the circular connection.
 
 
