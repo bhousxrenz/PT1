@@ -1,6 +1,6 @@
 # **LINKEDLIST**
 is a linear collection of data elements, called nodes, where each node points to the next node in the sequence.  Unlike arrays, linked lists don't store elements in contiguous memory locations, allowing for dynamic resizing and efficient insertions/deletions.  Each node in a linked list typically contains data and a pointer (or link) to the next node. This C++ code defines and demonstrates three fundamental linked list data structures: singly linked lists, doubly linked lists, and circular linked lists. 
-## **1. Includes and Namespace:**
+## Includes and Namespace:
 
 ```c++
 #include <iostream>
@@ -10,7 +10,7 @@ using namespace std;
 *   `#include <iostream>`: This line includes the iostream library, which provides input and output functionalities (like `cout` for printing to the console).
 *   `using namespace std;`: This line brings the standard namespace into the current scope, so you don't have to write `std::` before elements like `cout` and `endl`.
 
-## ** Node Structures:**
+## Node Structures:
 
 ```c++
 struct SinglyNode {
@@ -28,7 +28,7 @@ struct DoublyNode {
 *   `SinglyNode`: This structure defines a node for a singly linked list. It contains an integer `data` and a pointer `next` to the next node in the list.
 *   `DoublyNode`: This structure defines a node for a doubly linked list. It contains an integer `data`, a pointer `next` to the next node, and a pointer `prev` to the previous node.
 
-## ** Singly Linked List Functions:**
+## Singly Linked List Functions:
 
 ```c++
 void insertSingly(SinglyNode*& head, int data) {
@@ -56,7 +56,7 @@ void displaySingly(SinglyNode* head) {
 *   `insertSingly`: Inserts a new node with the given `data` at the end of the singly linked list.
 *   `displaySingly`: Prints the elements of the singly linked list to the console.
 
-## ** Doubly Linked List Functions:**
+## Doubly Linked List Functions:
 
 ```c++
 void insertDoubly(DoublyNode*& head, int data) {
@@ -85,7 +85,7 @@ void displayDoubly(DoublyNode* head) {
 *   `insertDoubly`: Inserts a new node with the given `data` at the end of the doubly linked list.  It also correctly sets the `prev` pointer.
 *   `displayDoubly`: Prints the elements of the doubly linked list.
 
-## ** Circular Linked List Functions:**
+## Circular Linked List Functions:
 
 ```c++
 void insertCircular(SinglyNode*& head, int data) {
@@ -118,7 +118,7 @@ void displayCircular(SinglyNode* head) {
 *   `insertCircular`: Inserts a new node into the circular linked list.
 *   `displayCircular`: Prints the elements of the circular linked list.
 
-## ** `main` Function:**
+## `main` Function:
 
 ```c++
 int main() {
