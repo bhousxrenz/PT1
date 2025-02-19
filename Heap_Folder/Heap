@@ -1,1 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <algorithm> // For std::make_heap, std::push_heap, std::pop_heap
 
+using namespace std;
+
+// Function to print the heap
+void printHeap(const vector<int>& heap) {
+    for (int value : heap) {
+        cout << value << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    // 1. Creating a Max Heap from a vector:
+    vector<int> maxHeap = {3, 1, 4, 1, 5, 9, 2, 6};
+
+    // Use std::make_heap to create a max heap
+    make_heap(maxHeap.begin(), maxHeap.end());
+
+    cout << "Max Heap: ";
+    printHeap(maxHeap);  // Output will vary, but the largest element will be at the front
+
+    // 2. Inserting into the Heap:
+    maxHeap.push_back(10); // Add a new element
+    push_heap(maxHeap.begin(), maxHeap.end()); // Adjust the heap
+
+    cout << "Max Heap after insertion: ";
+    printHeap(maxHeap);
+
+    // 3. Removing from the Heap (largest element):
+    pop_heap(maxHeap.begin(), maxHeap.end()); // Move the largest element to the end
+    maxHeap.pop_back(); // Remove it
+
+    cout << "Max Heap after removal: ";
+    printHeap(maxHeap);
+
+    // 4. Min Heap (demonstration):
+    vector<int> minHeap = {3, 1, 4, 1, 5, 9, 2, 6};
+
+    // Use std::make_heap with a custom comparator for a min heap
+    make_heap(minHeap.begin(), minHeap.end(), greater<int>()); // greater<int>() for min heap
+
+    cout << "Min Heap: ";
+    printHeap(minHeap);
+
+
+    // 5. Sorting using make_heap (Heap Sort):
+    vector<int> unsorted = {3, 1, 4, 1, 5, 9, 2, 6};
+
+    // Create a max heap:
+    make_heap(unsorted.begin(), unsorted.end());
+
+    // Sort:
+    sort_heap(unsorted.begin(), unsorted.end()); // Sorts the heap in ascending order
+
+    cout << "Sorted array (using heap sort): ";
+    printHeap(unsorted);
+
+    return 0;
+}
