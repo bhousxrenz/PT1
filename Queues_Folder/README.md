@@ -164,8 +164,3 @@ Dequeued: 10
 Queue elements: 60 20 30 40 50 
 ```
 
-**Explanation of the Output:**
-
-1.  The first `display()` call shows the queue is full with elements 10, 20, 30, 40, and 50.
-2.  After dequeuing 10, the queue has space.
-3.  When 60 is enqueued, it takes the "freed up" spot at the beginning of the array (due to the circular nature), so the queue becomes 60, 20, 30, 40, 50.
