@@ -42,4 +42,3 @@ Circular Linked List: 1 -> 2 -> 3 ->  (Back to Head)
 *   The doubly linked list contains the elements 100, 200, and 300.
 *   The circular linked list contains the elements 1, 2, and 3, and the output indicates that it's circular by showing "(Back to Head)".
 
-This code provides a clear illustration of how to implement and use the basic operations (insertion and display) for the three common types of linked lists in C++. It's well-structured and easy to understand, making it a good learning resource.
