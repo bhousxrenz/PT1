@@ -1,6 +1,7 @@
-**STACK** is a linear data structure that follows the Last-In, First-Out (LIFO) principle, meaning the last element added is the first one 1  removed.  Imagine a stack of plates – you can only take the top plate off, and the last plate you put on is the first one you take off. Stacks are used in various applications, such as function call management in programming, expression evaluation, and undo/redo mechanisms in software. This C++ code demonstrates several applications of the `std::stack` container, including string reversal, balanced parenthesis checking, basic stack operations, and decimal-to-binary conversion.
+# **STACK** 
+is a linear data structure that follows the Last-In, First-Out (LIFO) principle, meaning the last element added is the first one 1  removed.  Imagine a stack of plates – you can only take the top plate off, and the last plate you put on is the first one you take off. Stacks are used in various applications, such as function call management in programming, expression evaluation, and undo/redo mechanisms in software. This C++ code demonstrates several applications of the `std::stack` container, including string reversal, balanced parenthesis checking, basic stack operations, and decimal-to-binary conversion.
 
-**1. Includes and Namespace:**
+## Includes and Namespace:
 
 ```c++
 #include <iostream>
@@ -19,7 +20,7 @@ using namespace std;
 *   `#include <algorithm>`: For the `std::reverse` function (although the code implements string reversal manually using a stack, this include is not needed for the current code).
 *   `using namespace std;`: To avoid writing `std::` before standard library elements.
 
-**2. `reverseString()` Function:**
+## `reverseString()` Function:
 
 ```c++
 string reverseString(string str) {
@@ -43,7 +44,7 @@ string reverseString(string str) {
 *   While the stack is not empty, pops the top element from the stack and appends it to `reversedStr`.
 *   Returns the `reversedStr`.
 
-**3. `isBalanced()` Function:**
+## `isBalanced()` Function:
 
 ```c++
 bool isBalanced(string str) {
@@ -75,7 +76,7 @@ bool isBalanced(string str) {
     *   Checks if the popped element matches the closing parenthesis (if not, it's a mismatch, so return `false`).
 *   Finally, returns `true` if the stack is empty (all parentheses are matched), and `false` otherwise.
 
-**4. `main()` Function:**
+## `main()` Function:
 
 ```c++
 int main() {
@@ -129,7 +130,7 @@ int main() {
 *   Demonstrates `push()`, `top()`, `size()`, and `pop()` methods of the stack.
 *   Finally, it converts the decimal number 25 to its binary representation using a stack.
 
-**Output:**
+## Output:
 
 ```
 Reversed string: !kcatS ,olleH
