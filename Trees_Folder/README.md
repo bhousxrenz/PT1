@@ -1,5 +1,4 @@
-#####TREES
-is a widely used abstract data type that represents a hierarchical structure with a root value and subtrees of children with a parent node, represented as a set of linked nodes. Trees are non-linear data structures, unlike linear structures like arrays, and they can be traversed in various ways, such as inorder, preorder, and postorder.  They find applications in diverse areas, including file systems, decision-making algorithms, and representing hierarchical relationships.This C++ code demonstrates various tree traversal methods (inorder, preorder, postorder, and level order) and how to calculate the height of a binary tree.
+**TREES** is a widely used abstract data type that represents a hierarchical structure with a root value and subtrees of children with a parent node, represented as a set of linked nodes. Trees are non-linear data structures, unlike linear structures like arrays, and they can be traversed in various ways, such as inorder, preorder, and postorder.  They find applications in diverse areas, including file systems, decision-making algorithms, and representing hierarchical relationships.This C++ code demonstrates various tree traversal methods (inorder, preorder, postorder, and level order) and how to calculate the height of a binary tree.
 
 **1. Includes and Namespace:**
 
