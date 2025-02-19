@@ -1,7 +1,7 @@
 # **GRAPHS** 
 is a data structure consisting of a set of vertices (or nodes) and a set of edges that connect these vertices.  Edges may be directed (representing a one-way relationship) or undirected (representing a two-way relationship), and they can have weights assigned to them to represent costs or distances.  Graphs are used to model various real-world scenarios, such as social networks, road maps, and dependencies between tasks, enabling the analysis of connections and relationships. This C++ code implements Dijkstra's algorithm to find the shortest paths from a single source vertex to all other vertices in an undirected graph.
 
-## **1. Includes and Namespace:**
+## Includes and Namespace:
 
 ```c++
 #include <iostream>
@@ -18,7 +18,7 @@ using namespace std;
 *   `#include <climits>`: For using `INT_MAX` to represent infinity (an initially infinite distance).
 *   `using namespace std;`: To avoid writing `std::` before standard library elements.
 
-## **2. `Edge` Structure:**
+## `Edge` Structure:
 
 ```c++
 struct Edge {
@@ -31,7 +31,7 @@ struct Edge {
     *   `to`: The destination vertex of the edge.
     *   `weight`: The weight (cost) of the edge.
 
-## **3. `addEdge()` Function:**
+## `addEdge()` Function:
 
 ```c++
 void addEdge(vector<vector<Edge>>& adj, int u, int v, int w) {
@@ -42,7 +42,7 @@ void addEdge(vector<vector<Edge>>& adj, int u, int v, int w) {
 
 *   This function adds an undirected edge between vertices `u` and `v` with weight `w` to the adjacency list `adj`.  Because the graph is undirected, the edge is added to both `adj[u]` (u to v) and `adj[v]` (v to u).
 
-## **4. `dijkstra()` Function:**
+## `dijkstra()` Function:
 
 ```c++
 vector<int> dijkstra(const vector<vector<Edge>>& adj, int start) {
@@ -87,7 +87,7 @@ vector<int> dijkstra(const vector<vector<Edge>>& adj, int start) {
     *   If a shorter path to `v` is found (`dist[u] + weight < dist[v]`), the distance to `v` is updated, and `v` is added to the priority queue.
 *   Returns the `dist` vector containing the shortest path distances.
 
-## **5. `main()` Function:**
+## `main()` Function:
 
 ```c++
 int main() {
@@ -129,7 +129,7 @@ int main() {
 *   `shortestPaths`: Stores the result of Dijkstra's algorithm.
 *   The code then prints the shortest paths from the `startVertex` to all other vertices.
 
-## **Graph (Visual Representation):**
+## Graph (Visual Representation):
 
 ```
       0
@@ -143,7 +143,7 @@ int main() {
         5
 ```
 
-## **Output:**
+## Output:
 
 ```
 Shortest paths from vertex 0:
@@ -155,6 +155,6 @@ To vertex 4: 12
 To vertex 5: 13
 ```
 
-## **Explanation of the Output:**
+## Explanation of the Output:
 
 The output shows the shortest distances from vertex 0 to all other vertices. For example, the shortest path from vertex 0 to vertex 1 is 3 (0 -> 2 -> 1), the shortest path from vertex 0 to vertex 3 is 8 (0 -> 2 -> 1 -> 3), and so on.
