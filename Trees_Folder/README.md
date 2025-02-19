@@ -1,6 +1,7 @@
-**TREES** is a widely used abstract data type that represents a hierarchical structure with a root value and subtrees of children with a parent node, represented as a set of linked nodes. Trees are non-linear data structures, unlike linear structures like arrays, and they can be traversed in various ways, such as inorder, preorder, and postorder.  They find applications in diverse areas, including file systems, decision-making algorithms, and representing hierarchical relationships.This C++ code demonstrates various tree traversal methods (inorder, preorder, postorder, and level order) and how to calculate the height of a binary tree.
+## **TREES** 
+is a widely used abstract data type that represents a hierarchical structure with a root value and subtrees of children with a parent node, represented as a set of linked nodes. Trees are non-linear data structures, unlike linear structures like arrays, and they can be traversed in various ways, such as inorder, preorder, and postorder.  They find applications in diverse areas, including file systems, decision-making algorithms, and representing hierarchical relationships.This C++ code demonstrates various tree traversal methods (inorder, preorder, postorder, and level order) and how to calculate the height of a binary tree.
 
-**1. Includes and Namespace:**
+## Includes and Namespace:
 
 ```c++
 #include <iostream>
@@ -13,7 +14,7 @@ using namespace std;
 *   `#include <queue>`: Includes the queue library, which is needed for the level order (breadth-first) traversal.
 *   `using namespace std;`: Uses the standard namespace to avoid writing `std::` before standard elements.
 
-**2. `Node` Structure:**
+## `Node` Structure:
 
 ```c++
 struct Node {
@@ -31,9 +32,9 @@ struct Node {
     *   `right`: A pointer to the right child node.
     *   The constructor `Node(int val)` initializes a new node with the given `val` and sets the left and right pointers to `nullptr` (meaning no children initially).
 
-**3. Traversal Functions:**
+## Traversal Functions:
 
-*   **Inorder Traversal (Left, Root, Right):**
+## *   **Inorder Traversal (Left, Root, Right):**
 
 ```c++
 void inorder(Node* root) {
@@ -48,7 +49,7 @@ void inorder(Node* root) {
 
     *   Recursively traverses the left subtree, then visits the current node (prints its data), and then recursively traverses the right subtree.
 
-*   **Preorder Traversal (Root, Left, Right):**
+## *   **Preorder Traversal (Root, Left, Right):**
 
 ```c++
 void preorder(Node* root) {
@@ -63,7 +64,7 @@ void preorder(Node* root) {
 
     *   Visits the current node (prints its data), then recursively traverses the left subtree, and then recursively traverses the right subtree.
 
-*   **Postorder Traversal (Left, Right, Root):**
+## *   **Postorder Traversal (Left, Right, Root):**
 
 ```c++
 void postorder(Node* root) {
@@ -78,7 +79,7 @@ void postorder(Node* root) {
 
     *   Recursively traverses the left subtree, then recursively traverses the right subtree, and then visits the current node (prints its data).
 
-*   **Level Order Traversal (Breadth-First):**
+## *   **Level Order Traversal (Breadth-First):**
 
 ```c++
 void levelOrder(Node* root) {
@@ -110,7 +111,7 @@ void levelOrder(Node* root) {
         *   Prints the current node's data.
         *   Enqueues the left and right children of the current node (if they exist).
 
-**4. `height()` Function:**
+## `height()` Function:
 
 ```c++
 int height(Node* root) {
@@ -125,7 +126,7 @@ int height(Node* root) {
 *   The height of an empty tree is 0.
 *   Otherwise, the height is 1 (for the current node) plus the maximum of the heights of the left and right subtrees.
 
-**5. `main()` Function:**
+## `main()` Function:
 
 ```c++
 int main() {
@@ -156,7 +157,7 @@ int main() {
 
 *   Calls the traversal functions and `height()` function to demonstrate their usage.
 
-**Output:**
+## **Output:**
 
 ```
 Inorder traversal: 4 2 5 1 6 3 7 
